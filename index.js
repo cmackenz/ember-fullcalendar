@@ -1,4 +1,4 @@
-/* jshint node: true */
+/* eslint-env node */
 'use strict';
 
 module.exports = {
@@ -9,25 +9,11 @@ module.exports = {
   // },
 
   options: {
-    nodeAssets: {
-      'fullcalendar': function() {
-        return {
-          enabled: !process.env.EMBER_CLI_FASTBOOT,
-          srcDir: 'dist',
-          import: ['fullcalendar.js', 'fullcalendar.css']
-        }
-      },
-      'fullcalendar-scheduler': function() {
-        return {
-          enabled: !process.env.EMBER_CLI_FASTBOOT && this.includeScheduler,
-          srcDir: 'dist',
-          import: ['scheduler.js', 'scheduler.css']
-        }
-      }
-    }
+    nodeAssets: {},
   },
 
-  included: function(app, parentAddon) {
+  included(app, parentAddon) {
+    this._super.included.apply(this, arguments);
 
     var target = parentAddon || app;
 
@@ -38,13 +24,12 @@ module.exports = {
 
     var config = target.project.config(target.env) || {};
 
-    // Add scheduler to executable unless configured not to.
-    if (config.emberFullCalendar && config.emberFullCalendar.includeScheduler === true) {
-      this.includeScheduler = true;
-    } else {
-      this.includeScheduler = false;
-    }
+    var plugins = config.emberFullCalendar.plugins || ['core'];
+
+    plugins.forEach((plugin) => {
+      this.import(`node_modules/@fullcalendar/${plugin}/main.css`);
+    });
 
     this._super.included.apply(this, arguments);
-  }
+  },
 };

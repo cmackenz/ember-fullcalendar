@@ -1,6 +1,6 @@
 /* jshint node: true */
 
-module.exports = function(environment) {
+module.exports = function (environment) {
   var ENV = {
     modulePrefix: 'dummy',
     environment: environment,
@@ -10,7 +10,7 @@ module.exports = function(environment) {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
-      }
+      },
     },
 
     APP: {
@@ -18,8 +18,8 @@ module.exports = function(environment) {
       // when it is created
     },
     emberFullCalendar: {
-      includeScheduler: true
-    }
+      plugins: ['core', 'daygrid'],
+    },
   };
 
   if (environment === 'development') {
@@ -43,7 +43,6 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
   }
 
   return ENV;

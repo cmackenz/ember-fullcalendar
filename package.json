@@ -11,13 +11,14 @@
     "start": "ember server",
     "test": "ember try:each"
   },
-  "repository": "https://github.com/scoutforpets/ember-fullcalendar.git",
+  "repository": "https://github.com/cmackenz/ember-fullcalendar.git",
   "engines": {
     "node": ">= 0.10.0"
   },
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@fullcalendar/daygrid": "~4.2.0",
     "broccoli-asset-rev": "^2.5.0",
     "ember-assign-polyfill": "2.0.1",
     "ember-cli": "^2.12.1",
@@ -51,12 +52,11 @@
     "ember"
   ],
   "dependencies": {
+    "@fullcalendar/core": "~4.2.0",
     "ember-cli-babel": "^5.2.4",
     "ember-cli-htmlbars": "^1.2.0",
     "ember-cli-node-assets": "0.2.2",
-    "ember-invoke-action": "^1.4.0",
-    "fullcalendar": "^4.4.2",
-    "fullcalendar-scheduler": "^1.6.0"
+    "ember-invoke-action": "^1.4.0"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
